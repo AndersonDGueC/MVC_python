@@ -11,17 +11,25 @@ class VentanaPrincipal(QMainWindow):
 	    self.setup()
 
 	def setup(self):
-	    self.ingresar_reserva.clicked.connect(self.abrir_ventana_ingresar)
-	    self.ventanas=list()
+            self.ingresar_reserva.clicked.connect(self.abrir_ventana_ingresar)
+            self.cargar_info.clicked.connect(self.abrir_ventana_editar)
+            self.ventanas=list()
 
 	def abrir_ventana_ingresar(self):
 	    ventanaIngreso=VentanaIngresar(self)
 	    self.ventanas.append(ventanaIngreso)
 	    ventanaIngreso.show()
+	#abrir ventana editarO
+	def abrir_ventana_editar(self):
+            ventanaEditar=VentanaEditar(self)
+            self.ventanas.append(ventanaEditar)
+            ventanaEditar.show() 
+             #ventanaEditar.show()
+        #def abrir_ventana_editar(self):
         #metodo para conectar el controlador a la vista
         #este metodo se realiza desde el controlador
 	def asignarCoordinadorV(self,c):
-	    self.__miControlador=c
+            self.__miControlador=c
         #funcion para enviar los datos recolectados al controlador
 
 	def recibir_info2daVen(self,n,d,e):
@@ -56,6 +64,17 @@ class VentanaIngresar(QDialog):
 	def opcion_cancelar(self):
 	    self.__ventana_padre.show()
 
+class VentanaEditar(QDialog):
+    def __init__(self,ppal=None):
+        super().__init__(ppal)
+        loadUi("buscadorDoc.ui",self)
+        self.__ventana_padre=ppal
+        self.setup()
+
+    def setup(self):
+        self.campo_doc_busc.setValidator(QIntValidator())
+        #self.boton_busc.accepted.connect(self.opcion_buscar)
+        #self.boton_busc.rejected.connect(self.opcion_cancelar_busc)
 #Test de la vista, para encontrar posibles fallas
 """			
 def main():

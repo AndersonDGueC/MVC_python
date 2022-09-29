@@ -44,7 +44,7 @@ class Sistema:
          return 'reserva exitosa'
 
     def camposDialogo(self,d):
-       if self.__verificarExiste(d)==False:
+       if self.verificarExiste(d)==False:
          return None
        else:
          rec=self.__stock[d]
