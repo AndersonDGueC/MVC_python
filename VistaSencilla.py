@@ -73,8 +73,16 @@ class VentanaEditar(QDialog):
 
     def setup(self):
         self.campo_doc_busc.setValidator(QIntValidator())
-        #self.boton_busc.accepted.connect(self.opcion_buscar)
-        #self.boton_busc.rejected.connect(self.opcion_cancelar_busc)
+        self.boton_busc.accepted.connect(self.opcion_buscar)
+        self.boton_busc.rejected.connect(self.opcion_cancelar_busc)
+
+    def opcion_buscar(self):
+        d=self.campo_doc_busc.text()
+        print(d)
+        self.__ventana_padre.show()
+
+    def opcion_cancelar_busc(self):
+        self.__ventana_padre.show()
 #Test de la vista, para encontrar posibles fallas
 """			
 def main():
