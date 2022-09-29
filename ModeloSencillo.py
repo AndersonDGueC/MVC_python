@@ -43,12 +43,13 @@ class Sistema:
          self.__stock[d]=m
          return 'reserva exitosa'
 
-    def camposDialogo(self,d):
+    def recibirDoc(self,d):
        if self.verificarExiste(d)==False:
-         return None
+         return 'No existe datos con ese documento'
        else:
          rec=self.__stock[d]
          dicm={'nombre':rec.verNombre(), 'documento':rec.verDocumento(), 'equipo':rec.verEquipo()}
+         return dicm
 
     def asignarCoordinadorM(self,c):
         self.__miControlador=c

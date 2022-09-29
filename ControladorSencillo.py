@@ -4,12 +4,16 @@ from PyQt5.QtWidgets import QApplication
 import sys
 
 class Coordinador():
-	def __init__(self, vista, modelo):
-	    self.__mi_vista=vista
-	    self.__mi_modelo=modelo
-	#recibe desde la vista y lo envia al modelo directamente
-	def recibirInfoVista(self,n,d,e):
-	    return self.__mi_modelo.agregarReserva(n,d,e)
+        def __init__(self, vista, modelo):
+            self.__mi_vista=vista
+            self.__mi_modelo=modelo
+        #recibe desde la vista y lo envia al modelo directamente
+        def recibirInfoVista(self,n,d,e):
+            return self.__mi_modelo.agregarReserva(n,d,e)
+        #recibir desde la vista el documento
+        def recibirDocVista(self,d):
+            return self.__mi_modelo.recibirDoc(d)
+        
 
 def main():
     app=QApplication([])
