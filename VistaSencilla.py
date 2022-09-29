@@ -24,8 +24,15 @@ class VentanaPrincipal(QMainWindow):
             ventanaEditar=VentanaEditar(self)
             self.ventanas.append(ventanaEditar)
             ventanaEditar.show()
-             #ventanaEditar.show()
-        #def abrir_ventana_editar(self):
+        #la siguiente funcion nos otorgara los datos que deseamos modificar
+        #
+        def abrir_ventana_ined(self,n,d,e):
+            ventanaIngresoEd=VentanaIngresar(self)
+            ventanaIngresoEd.campo_nombre.setText(n)
+            ventanaIngresoEd.campo_documento.setText(d)
+            ventanaIngresoEd.campo_equipo.setText(e)
+            self.ventanas.append(ventanaIngresoEd)
+            ventanaIngresoEd.show()
         #metodo para conectar el controlador a la vista
         #este metodo se realiza desde el controlador
         def asignarCoordinadorV(self,c):
@@ -41,7 +48,8 @@ class VentanaPrincipal(QMainWindow):
             if s==aux:
               QMessageBox.information(self,'mensaje informativo',s)
             else:
-              self.abrir_ventana_ingresar()
+              #print(s['nombre'])
+              self.abrir_ventana_ined(s['nombre'],s['documento'],s['equipo'])
 #ventana ingresar datos creada
 class VentanaIngresar(QDialog):
         def __init__(self,ppal=None):
